@@ -12,5 +12,14 @@ addBtn.addEventListener("click",()=>{
     task.textContent=userInput;
     taskList.append(task);
 
-    input.value=" ";
+    input.value="";
+
+    const deleteBtn=document.createElement("button");
+    deleteBtn.textContent="Delete";
+    task.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener("click",()=>{
+        task.remove();
+    })
+
 })
