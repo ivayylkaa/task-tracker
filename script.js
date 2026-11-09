@@ -1,33 +1,49 @@
-const input=document.getElementById("task");
-const addBtn=document.getElementById("addBtn");
-const taskList=document.getElementById("taskList");
+const input = document.getElementById("task");
+const addBtn = document.getElementById("addBtn");
+const taskList = document.getElementById("taskList");
 
-let tasks=[];
+let tasks = [];
 
-addBtn.addEventListener("click",()=>{
-    const userInput = input.value.trim();
-    if(userInput=== "") return;
+function render() {
+  taskList.textContent = "";
+  tasks.forEach((x) => {
+    const li = document.createElement("li");
+    li.textContent = x.title;
 
-    const taskObject={
-        id:Date.now(),
-        title:userInput,
-        completed:false
+    if (x.completed === true) {
+      li.style.textDecoration = "line-through";
     }
 
-    let task=document.createElement("li");
-    task.textContent=userInput;
-    taskList.append(task);
-    tasks.push(taskObject)
-    input.value="";
+    taskList.append(li);
 
-    const deleteBtn=document.createElement("button");
-    deleteBtn.textContent="Delete";
-    task.appendChild(deleteBtn);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    li.appendChild(deleteBtn);
 
-    deleteBtn.addEventListener("click",()=>{
-        task.remove();
-        tasks=tasks.filter(x=>x.id!==taskObject.id);
-    })
+    deleteBtn.addEventListener("click", (e) => {
+      tasks = tasks.filter((y) => y.id !== x.id);
+      render();
+      e.stopPropagation();
+    });
 
-    console.log(tasks);
-}) 
+    li.addEventListener("click", () => {
+      x.completed = !x.completed;
+      render();
+    });
+  });
+}
+
+addBtn.addEventListener("click", () => {
+  const userInput = input.value.trim();
+  if (userInput === "") return;
+
+  const taskObject = {
+    id: Date.now(),
+    title: userInput,
+    completed: false,
+  };
+
+  tasks.push(taskObject);
+  render();
+  input.value = "";
+});
