@@ -2,9 +2,10 @@ const input = document.getElementById("task");
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 function render() {
+  localStorage.setItem("tasks", JSON.stringify(tasks))
   taskList.textContent = "";
   tasks.forEach((x) => {
     const li = document.createElement("li");
@@ -47,3 +48,5 @@ addBtn.addEventListener("click", () => {
   render();
   input.value = "";
 });
+
+render();
