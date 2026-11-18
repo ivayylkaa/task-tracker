@@ -5,15 +5,19 @@ const taskList = document.getElementById("taskList");
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 function render() {
-  localStorage.setItem("tasks", JSON.stringify(tasks))
+  localStorage.setItem("tasks", JSON.stringify(tasks));
   taskList.textContent = "";
   tasks.forEach((x) => {
     const li = document.createElement("li");
-    li.textContent = x.title;
+
+    const taskText = document.createElement("span");
+    taskText.textContent = x.title;
 
     if (x.completed === true) {
-      li.style.textDecoration = "line-through";
+      taskText.style.textDecoration = "line-through";
     }
+
+    li.appendChild(taskText);
 
     taskList.append(li);
 

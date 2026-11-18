@@ -1,0 +1,173 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #faa17a, #f7c7a3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #b84e20;
+  font-size: 42px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: -1px;
+  margin: 0 0 35px;
+}
+
+#task {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 18px;
+  margin-bottom: 15px;
+  background-color: #fff9f2;
+  color: #874d38;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(120, 60, 30, 0.08);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#task:focus {
+  border-color: #ee6200;
+  box-shadow: 0 4px 20px rgba(238, 98, 0, 0.15);
+}
+
+#addBtn {
+  width: 100%;
+  max-width: 400px;
+  padding: 14px 20px;
+  background-color: #ee6200;
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  box-shadow: 0 5px 15px rgba(238, 98, 0, 0.2);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#addBtn:hover {
+  background-color: #d95700;
+  transform: translateY(-2px);
+}
+
+#addBtn:active {
+  transform: scale(0.98);
+}
+
+#taskList {
+  width: 100%;
+  max-width: 500px;
+  min-height: 100px;
+  margin: 35px 0 0;
+  padding: 20px;
+
+  background-color: #fff9f2;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(120, 60, 30, 0.12);
+
+  list-style: none;
+}
+
+#taskList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  padding: 15px;
+  margin-bottom: 12px;
+
+  background-color: #ffffff;
+  color: #874d38;
+
+  border: 1px solid #f0d9cb;
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  overflow-wrap: anywhere;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+#taskList li:last-child {
+  margin-bottom: 0;
+}
+
+#taskList li:hover {
+  background-color: #fff0e7;
+  transform: translateY(-2px);
+}
+
+#taskList li button {
+  flex-shrink: 0;
+  padding: 9px 14px;
+
+  background-color: #ffe4d6;
+  color: #c6532b;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+#taskList li button:hover {
+  background-color: #e66b45;
+  color: white;
+}
+
+#taskList li button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 40px 15px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  #taskList {
+    padding: 15px;
+  }
+
+  #taskList li {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  #taskList li button {
+    padding: 8px 10px;
+  }
+}
